@@ -29,21 +29,6 @@
             font-weight: bold;
             margin-top: 10px;
         }
-        .confidence-bar {
-            height: 25px;
-            background-color: #e9ecef;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-        .confidence-fill {
-            height: 100%;
-            background-color: #4CAF50;
-            border-radius: 5px;
-            text-align: center;
-            color: white;
-            font-weight: bold;
-            line-height: 25px;
-        }
         .info-box {
             background-color: #f8f9fa;
             border-left: 5px solid #4CAF50;
@@ -67,18 +52,11 @@
                 <div class="col-md-6 text-center">
                     <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Plant Leaf" class="result-image">
                     <h4 class="disease-name">{{ disease_name }}</h4>
-                    <div class="mt-2">Độ tin cậy:</div>
-                    <div class="confidence-bar">
-                        <div class="confidence-fill" style="width: {{ confidence }}%">
-                            {{ "%.2f"|format(confidence) }}%
-                        </div>
-                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="info-box">
                         <h5>Mô tả:</h5>
                         <p>{{ description }}</p>
-
                         <h5 class="mt-3">Cách chữa trị:</h5>
                         <p>{{ treatment }}</p>
                     </div>
