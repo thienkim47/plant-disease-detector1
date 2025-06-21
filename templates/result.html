@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả phân tích bệnh lá cây</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .leaf-icon {
+            color: #4CAF50;
+            margin-right: 10px;
+        }
+        .result-container {
+            background-color: #f8fff8;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #e0e0e0;
+        }
+        .result-image {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .disease-name {
+            color: #d9534f;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .confidence-bar {
+            height: 25px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .confidence-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            line-height: 25px;
+        }
+        .info-box {
+            background-color: #f8f9fa;
+            border-left: 5px solid #4CAF50;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-4">
+        <h1 class="text-center mb-4">
+            <i class="fas fa-leaf leaf-icon"></i>Kết quả phân tích
+        </h1>
+
+        <div class="result-container">
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Plant Leaf" class="result-image">
+                    <h4 class="disease-name">{{ disease_name }}</h4>
+                    <div class="mt-2">Độ tin cậy:</div>
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" style="width: {{ confidence }}%">
+                            {{ "%.2f"|format(confidence) }}%
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="info-box">
+                        <h5>Mô tả:</h5>
+                        <p>{{ description }}</p>
+
+                        <h5 class="mt-3">Cách chữa trị:</h5>
+                        <p>{{ treatment }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/" class="btn back-button">
+                <i class="fas fa-arrow-left"></i> Quay lại
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
